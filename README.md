@@ -1,6 +1,6 @@
 # Synergistic Personality Detection using Hybrid AI
 
-![Project Banner](https://user-images.githubusercontent.com/29746973/149817726-24e0f49c-8e62-42e1-80a5-e362c8234857.png)
+[![Title](https://img.shields.io/badge/Synergistic%20Personality%20Detection-using%20Hybrid%20AI-blueviolet)](https://github.com/user-aditi/Synergistic-Personality-Detection)
 
 This project is a web-based application that analyzes user-provided text to predict the **Big Five (OCEAN) personality traits**. It uses a sophisticated hybrid model that combines the deep contextual understanding of **RoBERTa embeddings** with rich, hand-crafted **linguistic features**. The user interacts with an AI assistant named Kai through a chat interface, receiving real-time personality insights and sentiment analysis.
 
@@ -94,6 +94,16 @@ If you want to train the model from scratch, you can run the following scripts i
 
 1.  `python preprocess_embeddings.py`
 2.  `python train_hybrid_mlp.py`
+
+---
+
+## 📜 License & Citation
+
+The code in this repository is currently available for review and academic auditing purposes. We plan to release the code under a permissive open-source license (such as the MIT License) upon the official publication of our associated research paper.
+
+Until then, all rights are reserved. You may not use, reproduce, or distribute this code for commercial or non-commercial purposes without our express written permission.
+
+If you would like to cite this work, please wait for the official publication. A citation will be provided here once it is available.
 
 ---
 
