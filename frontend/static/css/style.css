@@ -1,0 +1,339 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Refined Color Palette */
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #9b59b6; /* Accent for bot avatar */
+    --success-color: #27ae60;
+    --danger-color: #e74c3c;
+    --warning-color: #f39c12;
+    --background-color: #f4f6f8;
+    --card-background: #ffffff;
+    --text-color: #34495e;
+    --text-muted: #95a5a6;
+    --border-color: #e0e0e0;
+    
+    /* Spacing */
+    --spacing-sm: 0.8rem;
+    --spacing-md: 1.2rem;
+    --spacing-lg: 1.8rem;
+    
+    /* Border Radius */
+    --border-radius: 8px;
+    --border-radius-lg: 16px;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    overflow: hidden;
+}
+
+/* --- Main App Layout --- */
+.app-layout {
+    display: flex;
+    height: 100vh;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+    width: 400px;
+    background: var(--card-background);
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-md);
+    z-index: 10;
+    border-right: 1px solid var(--border-color);
+    overflow-y: auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    color: var(--primary-color);
+}
+.logo i { font-size: 2.2rem; color: var(--secondary-color); }
+.logo h1 { font-size: 1.7rem; font-weight: 600; }
+
+.traits-container h3 {
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: var(--spacing-sm);
+}
+
+/* --- New Trait Card Style --- */
+#trait-details { 
+    display: flex; 
+    flex-direction: column; 
+    gap: var(--spacing-sm); 
+}
+.trait-card {
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: var(--shadow-sm);
+}
+.trait-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--secondary-color);
+}
+.trait-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    font-weight: 600; 
+    margin-bottom: var(--spacing-sm); 
+    font-size: 1.1rem;
+}
+.progress-bar { 
+    width: 100%; 
+    background-color: var(--background-color); 
+    border-radius: 5px; 
+    height: 10px; 
+    overflow: hidden;
+}
+.progress-bar-fill { 
+    height: 100%; 
+    border-radius: 5px; 
+    transition: width 0.5s ease-in-out, background-color 0.5s ease; 
+}
+
+/* --- Chat Area --- */
+.chat-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.chat-window {
+    flex: 1;
+    padding: var(--spacing-lg);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+/* --- Messages --- */
+.message { display: flex; max-width: 80%; gap: var(--spacing-md); }
+.avatar { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; color: white; }
+.avatar.user-avatar { background-color: var(--secondary-color); }
+.avatar.bot-avatar { background-color: var(--accent-color); }
+.message-content { padding: var(--spacing-sm) var(--spacing-md); border-radius: var(--border-radius-lg); line-height: 1.5; animation: fadeIn 0.3s ease-in; word-wrap: break-word; }
+.user-message { align-self: flex-end; flex-direction: row-reverse; }
+.user-message .message-content { background: var(--secondary-color); color: white; border-bottom-right-radius: 4px; }
+.bot-message { align-self: flex-start; }
+.bot-message .message-content { background: var(--card-background); color: var(--text-color); border-bottom-left-radius: 4px; box-shadow: var(--shadow-sm); }
+
+/* --- Chat Input --- */
+.chat-input-bar { display: flex; padding: var(--spacing-md); border-top: 1px solid var(--border-color); background: #fdfdfd; gap: var(--spacing-sm); align-items: center; }
+#text-input { flex: 1; padding: var(--spacing-sm); border: 1px solid var(--border-color); border-radius: var(--border-radius); font-size: 1rem; font-family: inherit; resize: none; transition: all 0.2s ease; max-height: 120px; }
+#analyze-btn { height: 44px; width: 44px; font-size: 1.2rem; }
+
+/* --- Modal Styles --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.modal-content {
+    background: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    width: 90%;
+    box-shadow: var(--shadow-md);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+.modal-content h3 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+}
+.modal-content input {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    margin-bottom: var(--spacing-md);
+}
+.modal-content .loading-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    min-height: 150px;
+}
+.modal-content .loading-spinner i {
+    color: var(--secondary-color);
+}
+.modal-content p {
+    line-height: 1.7;
+}
+
+/* Other styles */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.btn { padding: var(--spacing-sm) var(--spacing-md); border: none; border-radius: var(--border-radius); font-size: 1rem; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; gap: var(--spacing-xs); }
+.btn-primary { background: var(--secondary-color); color: white; }
+.btn-primary:hover { background: #2980b9; }
+
+/* --- Sidebar Footer & Actions --- */
+.sidebar-footer {
+    margin-top: auto; /* Pushes the footer to the bottom */
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.btn {
+    /* Ensure these properties are present */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* <-- THIS IS THE KEY: Adds space between icon and text */
+
+    /* ... other existing styles like padding, border, etc. ... */
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+sidebar-footer .btn {
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: var(--border-radius);
+    gap: 0.6rem;
+    transition: all 0.2s ease-in-out;
+}
+
+
+.btn-secondary {
+    background-color: var(--primary-color);
+    color: white;
+    border: 1px solid var(--primary-color);
+}
+.btn-secondary:hover {
+    background-color: #3e5771;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+.btn:disabled {
+    background-color: var(--text-muted);
+    cursor: not-allowed;
+}
+.btn-tertiary {
+    background-color: var(--card-background);
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+}
+.btn-tertiary:hover {
+    color: var(--primary-color);
+    border-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* --- API Status Indicator --- */
+.api-status {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    justify-content: center;
+}
+.api-status .indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--warning-color); /* Default: pending */
+    transition: background-color 0.5s ease;
+}
+.api-status.online .indicator { background-color: var(--success-color); }
+.api-status.offline .indicator { background-color: var(--danger-color); }
+
+
+/* --- Sentiment Chart --- */
+.chart-container {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    padding-bottom: 30px;
+    background-color: #fdfdfd;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    position: relative;
+    /* THIS IS THE DEFINITIVE FIX: Use a fixed height, not max-height */
+    height: 220px;
+}
+.chart-container h3 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.chart-container.is-empty canvas {
+    opacity: 0.2; /* Fade out the empty grid to make text readable */
+}
+
+.chart-container.is-empty::before {
+    content: 'Your mood analysis will appear here as you chat.';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-align: center;
+    width: 80%;
+    pointer-events: none; /* Make it unclickable */
+}

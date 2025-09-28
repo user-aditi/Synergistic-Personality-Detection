@@ -1,0 +1,31 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+/penv/
+/venv/
+/.venv/
+/env/
+/venv.bak/
+/penv.bak/
+
+# Environment variables
+# IMPORTANT: Never commit your secret keys!
+.env
+
+# IDE and OS-specific files
+.vscode/
+.idea/
+.DS_Store
+*.swp
+
+# Ignore all files in the models directory...
+/models/*
+
+# ...EXCEPT for the ones required to run the app.
+!/models/hybrid_mlp_model.pth
+!/models/linguistic_feature_scaler.pkl
+!/models/feature_columns.pkl

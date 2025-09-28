@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCEAN Personality Analyzer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <h1 id="sidebar-title">Your Profile</h1>
+            </div>
+            
+            <div class="traits-container">
+                <h3>Trait Breakdown</h3>
+                <div id="trait-details">
+                    </div>
+            </div>
+
+            <div class="chart-container">
+                <h3>Mood Analysis</h3>
+                <canvas id="sentiment-chart"></canvas>
+            </div>
+
+            <div class="sidebar-footer">
+                <button id="summary-btn" class="btn btn-secondary">
+                    <i class="fas fa-file-alt"></i> Generate Final Summary
+                </button>
+                <button id="new-chat-btn" class="btn btn-tertiary">
+                    <i class="fas fa-sync-alt"></i> New Chat
+                </button>
+                <div id="api-status" class="api-status">
+                    <span class="indicator"></span>
+                    <span>API Status</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="chat-area">
+            <div id="chat-window" class="chat-window">
+                </div>
+            <div class="chat-input-bar">
+                <textarea id="text-input" placeholder="Share your thoughts here..." rows="1" disabled></textarea>
+                <button id="analyze-btn" class="btn btn-primary" disabled>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <div id="name-modal-overlay" class="modal-overlay active">
+        <div class="modal-content">
+            <h3>Welcome to the Personality Analyzer!</h3>
+            <p>I'm Kai, your guide for this session. To personalize your experience, what name should I call you by?</p>
+            <input type="text" id="name-input" placeholder="Enter your name..." autofocus>
+            <button id="submit-name-btn" class="btn btn-primary">Begin Analysis</button>
+        </div>
+    </div>
+
+    <div id="explanation-modal-overlay" class="modal-overlay">
+        <div id="explanation-modal-content" class="modal-content">
+            </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
