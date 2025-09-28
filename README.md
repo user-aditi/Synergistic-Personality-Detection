@@ -33,7 +33,7 @@ Follow these steps to get the project running on your local machine.
 
 ### 1. **Clone the Repository**
 ```bash
-git clone [https://github.com/user-aditi/Synergistic-Personality-Detection.git](https://github.com/user-aditi/Synergistic-Personality-Detection.git)
+git clone https://github.com/user-aditi/Synergistic-Personality-Detection.git
 cd Synergistic-Personality-Detection
 ```
 
@@ -41,7 +41,7 @@ cd Synergistic-Personality-Detection
 It's recommended to use a virtual environment to manage dependencies.
 ```bash
 python -m venv penv
-source penv/bin/activate  # On Windows, use `penv\Scripts\activate`
+penv\Scripts\activate
 ```
 
 ### 3. **Install Dependencies**
